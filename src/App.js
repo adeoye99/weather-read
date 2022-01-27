@@ -1,15 +1,36 @@
-import Login from "./Components/Login";
-import Profile from "./Components/Profile";
 import './App.css';
-import Changecolor from "./Components/Changecolor";
+import styled from "styled-components";
+
+const container = styled.div`
+display:flex;
+flex-direction: column;
+margin: auto;
+align-items: center;
+box-shadox: 0 3px 6px 0;
+ 
+
+`
+const citycomponent = styled.div`
+display:flex;
+flex-direction: column;
+
+`
+const weathercomponent = styled.div`
+display:flex;
+flex-direction: column;
+
+`
+
 
 function App() {
   return (
-    <div className="App">
-     <Profile/>
-     <Login/>
-     <Changecolor/>
-    </div>
+    <container>
+      <citycomponent>
+
+      </citycomponent>
+
+    </container>
+
   );
 }
 
