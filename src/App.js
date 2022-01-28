@@ -34,7 +34,7 @@ function App() {
     <Container>
       <Label>Weather Read</Label>
       <CityComponents/>
-      <Weathercomponent>Weathercomponents</Weathercomponent>
+      <Weathercomponent></Weathercomponent>
     </Container>
 
   );
