@@ -1,35 +1,41 @@
-import './App.css';
+
+import CityComponents from "./Components/CityComponents"
 import styled from "styled-components";
 
-const container = styled.div`
+const Container = styled.div`
 display:flex;
-flex-direction: column;
-margin: auto;
-align-items: center;
-box-shadox: 0 3px 6px 0;
- 
-
+flex-direction:column;
+margin:auto;
+align-items:center;
+box-shadow:0 3px 6px 0 #555;
+padding:20px 10px;
+border-radius: 10px;
+border:1px solid;
+width:380px;
+background:white;
 `
-const citycomponent = styled.div`
-display:flex;
-flex-direction: column;
-
-`
-const weathercomponent = styled.div`
+const Citycomponent = styled.div`
 display:flex;
 flex-direction: column;
 
 `
+const Weathercomponent = styled.div`
+display:flex;
+flex-direction: column;
 
-
+`
+const Label = styled.span`
+color:black;
+font-size: 19px;
+font-weight:bold;
+`
 function App() {
   return (
-    <container>
-      <citycomponent>
-
-      </citycomponent>
-
-    </container>
+    <Container>
+      <Label>Weather Read</Label>
+      <CityComponents/>
+      <Weathercomponent>Weathercomponents</Weathercomponent>
+    </Container>
 
   );
 }
