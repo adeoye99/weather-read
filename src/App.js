@@ -1,6 +1,7 @@
 import CityComponents from "./Components/CityComponents"
 import WeatherComponents from "./Components/WeatherInfocopmonents"
 import styled from "styled-components";
+import "./index.css";
 
 const Container = styled.div`
 display: flex;
