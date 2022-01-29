@@ -1,6 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-
+export const WeatherInfoIcons = {
+    sunset:"/icons/temp.svg",
+    sunrise:"/icons/temp.svg",
+    humidity: "/icons/humidity.svg",
+    wind:"/icons/wind.svg",
+    pressure: "/icons/pressure.svg"
+}
 const WeatherCondition = styled.div`
 display:flex;
 flex-direction:row;
@@ -69,11 +75,14 @@ height:36px
 
 
 
-const WeatherInfocomponent = ()=>{
+const WeatherInfocomponent = (props)=>{
+    const [name,value] = props
 return(
     <InfoContainer>
-        <InfoIcon src ={"/icons/temp.svg"}/>
+        <InfoIcon src ={WeatherInfoIcons[name]}/>
          <InfoLabel>
+             {value}
+                <span>{name}</span>
 
          </InfoLabel>
 
@@ -96,13 +105,13 @@ const WeatherComponent = () =>{
          <Location> London, GB</Location>
          <WeatherInfoLabel>Weather Info</WeatherInfoLabel>
          <WeatherInfocontainer>
-             <WeatherInfocomponent/>
-             <WeatherInfocomponent/>
-             <WeatherInfocomponent/>
+             <WeatherInfocomponent name = "sunrise" value = "2332"/>
+             <WeatherInfocomponent name = "himidity" value = "432"/>
+             <WeatherInfocomponent name= "wind" value = "423"/>
+             <WeatherInfocomponent name = "pressure" value = "42432"/>
              <WeatherInfocomponent/>
          </WeatherInfocontainer>
     </>
    )
-
 }
 export default  WeatherComponent;
