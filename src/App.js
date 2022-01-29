@@ -1,28 +1,18 @@
-
 import CityComponents from "./Components/CityComponents"
+import WeatherComponents from "./Components/WeatherInfocopmonents"
 import styled from "styled-components";
 
 const Container = styled.div`
-display:flex;
+display: flex;
 flex-direction:column;
 margin:auto;
 align-items:center;
 box-shadow:0 3px 6px 0 #555;
 padding:20px 10px;
-border-radius: 10px;
+border-radius: 5px;
 border:1px solid;
 width:380px;
 background:white;
-`
-const Citycomponent = styled.div`
-display:flex;
-flex-direction: column;
-
-`
-const Weathercomponent = styled.div`
-display:flex;
-flex-direction: column;
-
 `
 const Label = styled.span`
 color:black;
@@ -33,8 +23,7 @@ function App() {
   return (
     <Container>
       <Label>Weather Read</Label>
-      <CityComponents/>
-      <Weathercomponent></Weathercomponent>
+      <WeatherComponents/>
     </Container>
 
   );
