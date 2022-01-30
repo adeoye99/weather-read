@@ -10,7 +10,7 @@ export const WeatherInfoIcons = {
 const WeatherCondition = styled.div`
 display:flex;
 flex-direction:row;
-align-item: center;
+align-items: center;
 width:100%;
 justify-content: space-between;
 margin:30px auto;
@@ -42,7 +42,7 @@ margin: 20px 25px 10px;
 text-align:start;
 width:90%;
 `
-const WeatherInfocontainer= styled.span`
+const WeatherInfocontainer= styled.div`
 display:flex;
 width:90%;
 flex-direction: row;
@@ -51,14 +51,14 @@ align-items: center;
 flex-wrap: wrap;
 
 `
-const InfoContainer = styled.span`
+const InfoContainer = styled.div`
 display: flex;
 margin:5px 10px;
 flex-direction: row;
 justify-content: space-evenly;
 align-items:center;
 `
-const InfoLabel = styled.img`
+const InfoLabel = styled.span`
 display: flex;
 flex-direction: column;
 font-size: 14px;
@@ -76,23 +76,17 @@ height:36px
 
 
 const WeatherInfocomponent = (props)=>{
-    const [name,value] = props
+    const {name,value} = props
 return(
     <InfoContainer>
         <InfoIcon src ={WeatherInfoIcons[name]}/>
          <InfoLabel>
              {value}
                 <span>{name}</span>
-
          </InfoLabel>
-
     </InfoContainer>
-
-    
-)
-
-
-}
+);
+};
 const WeatherComponent = (props) =>{
 const { weather } = props
 const isDay = weather?.weather[0].icons?.includes("d"); 
@@ -100,10 +94,10 @@ const getTime = (timestamp) =>{
     return `${new Date(timestamp * 1000).getHours()} : ${new Date(timestamp * 1000).getMinutes()}` 
 }
     return (
-    <>
+        <>
         <WeatherCondition>
             <Condition>
-               <span>{`${Math.floor(weather?.main?.temp - 273)}`}</span>{`${weather?.weather[0].description}`}loudy
+               <span>{`${Math.floor(weather?.main?.temp - 273)}`}</span>{`${weather?.weather[0].description}`}
             </Condition>
             <Weatherlogo src = "/icons/perfect-day.svg"/>       
         </WeatherCondition>
@@ -116,7 +110,7 @@ const getTime = (timestamp) =>{
              <WeatherInfocomponent name= "wind" value ={weather?.main?.wind}/>
              <WeatherInfocomponent name = "pressure" value = {weather?.main?.pressure}/>
          </WeatherInfocontainer>
-    </>
+        </>
    )
 }
-export default  WeatherComponent;
+export default WeatherComponent;

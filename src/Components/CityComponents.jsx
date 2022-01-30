@@ -43,7 +43,7 @@ margin: 20px auto;
 const CityComponents = (props) =>{
     const { updateCity , fetchWeather } = props;
     return (
-    <div>
+    <>
         <Weatherlogo src = "/icons/perfect-day.svg"/>
         <Choosecity>Find Weather of your city</Choosecity>
         <SearchBox onSubmit = {fetchWeather}>
@@ -53,8 +53,8 @@ const CityComponents = (props) =>{
             />
             <button type = "submit">Search</button>
         </SearchBox>
-    </div>
+    </>
    )
 
 }
-export default  CityComponents;
+export default CityComponents;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from "axios";
 import CityComponents from "./Components/CityComponents"
 import styled from "styled-components";
-import "./index.css";
+
 import WeatherComponent from "./Components/WeatherInfocopmonents";
 const API_KEY = "aa899967734f43c3d5c892c656535cfc"
 const Container = styled.div`
@@ -25,13 +25,7 @@ font-weight:bold;
 function App() {
   const [city ,updateCity] = useState();
   const [weather, updateWeather] = useState();
-useEffect(()=>{
-  fetchWeather();
-  return() =>{
-    (response)
-  }
 
-})
  const fetchWeather = async (event) => {
     event.preventDefault();
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
@@ -39,14 +33,13 @@ useEffect(()=>{
      
   }
   return (
-    <Container>
+    <>
+        <Container>
       <Label>Weather Read</Label>
-      {weather ? (
-          <WeatherComponent weather={weather} />
-      ):(
-      <CityComponents updateCity = {updateCity} fetchWeather= {fetchWeather}/>
-      )}
+           <WeatherComponent/>
     </Container>
+    
+    </>
 
   );
 }
