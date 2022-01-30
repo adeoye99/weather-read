@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import axios from "axios";
 import CityComponents from "./Components/CityComponents"
-import WeatherComponents from "./Components/WeatherInfocopmonents"
 import styled from "styled-components";
 import "./index.css";
 import WeatherComponent from "./Components/WeatherInfocopmonents";
@@ -25,17 +25,26 @@ font-weight:bold;
 function App() {
   const [city ,updateCity] = useState();
   const [weather, updateWeather] = useState();
-  const fetchWeather = async (e)=>{
-    const response = await 
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API_KEY}`)
+useEffect(()=>{
+  fetchWeather();
+  return() =>{
+    (response)
+  }
+
+})
+ const fetchWeather = async (event) => {
+    event.preventDefault();
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
+    updateWeather(response.data)
+     
   }
   return (
     <Container>
       <Label>Weather Read</Label>
       {weather ? (
-          <WeatherComponent />
+          <WeatherComponent weather={weather} />
       ):(
-      <CityComponents updateCity = {updateCity} />
+      <CityComponents updateCity = {updateCity} fetchWeather= {fetchWeather}/>
       )}
     </Container>
 
