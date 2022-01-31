@@ -36,9 +36,7 @@ margin: 20px auto;
     border:none;
     outline:none;
     cursor:pointer;
-
 }
-
 `
 const CityComponents = (props) =>{
     const { updateCity , fetchWeather } = props;

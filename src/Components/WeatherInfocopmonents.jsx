@@ -7,6 +7,26 @@ export const WeatherInfoIcons = {
     wind:"/icons/wind.svg",
     pressure: "/icons/pressure.svg"
 }
+export const WeatherIcon = {
+    "01d":"/icons/sunny.svg",
+    "01n":"/icons/night.svg",
+    "02d":"/icons/day.svg",
+    "02n":"/icons/cloudy-night.svg",
+    "03d":"/icons/cloudy.svg",
+    "03n":"/icons/cloudy.svg",
+    "04d":"/icons/perfect-day.svg",
+    "04n":"/icons/cloudy-night.svg",
+    "09d":"/icons/rain.svg",
+    "09n":"/icons/rain-night.svg",
+    "10d":"/icons/rain.svg",
+    "10n":"/icons/rain-night.svg",
+    "11d":"/icons/storm.svg",
+    "11n":"/icons/storm.svg",
+}
+export const WeatherIcons = {
+
+
+}
 const WeatherCondition = styled.div`
 display:flex;
 flex-direction:row;
@@ -76,7 +96,7 @@ height:36px
 
 
 const WeatherInfocomponent = (props)=>{
-    const {name,value} = props
+    const { name,value } = props
 return(
     <InfoContainer>
         <InfoIcon src ={WeatherInfoIcons[name]}/>
@@ -87,27 +107,30 @@ return(
     </InfoContainer>
 );
 };
-const WeatherComponent = (props) =>{
-const { weather } = props
+const WeatherComponent = ({weather}) =>{
+
 const isDay = weather?.weather[0].icons?.includes("d"); 
-const getTime = (timestamp) =>{
-    return `${new Date(timestamp * 1000).getHours()} : ${new Date(timestamp * 1000).getMinutes()}` 
+const getTime = (timeStamp) =>{
+    return `${new Date(timeStamp * 1000).getHours()} : ${new Date(timeStamp * 1000).getMinutes()}`; 
 }
     return (
         <>
         <WeatherCondition>
             <Condition>
-               <span>{`${Math.floor(weather?.main?.temp - 273)}`}</span>{`${weather?.weather[0].description}`}
+               <span>{`${Math.floor(weather?.main?.temp - 273)}°C`}</span>
+               
+               {` | ${weather?.weather[0].description}`}
             </Condition>
-            <Weatherlogo src = "/icons/perfect-day.svg"/>       
+            <Weatherlogo src = {WeatherIcon[weather?.weather[0].icon]}/>       
         </WeatherCondition>
-         <Location> {`${weather?.name},${weather?.sys.country}`}</Location>
+         <Location> {`${weather?.name},${weather?.sys?.country}`}</Location>
          <WeatherInfoLabel>Weather Info</WeatherInfoLabel>
          <WeatherInfocontainer>
-             <WeatherInfocomponent name ={isDay ?"sunset":"sunrise"} 
-             value = { getTime(isDay ? "sunset": "sunrise")}/>
+             <WeatherInfocomponent 
+             name = {isDay ?"sunset":"sunrise"} 
+             value = { getTime(weather?.sys[isDay ? "sunset": "sunrise"])}/>
              <WeatherInfocomponent name = "humidity" value = {weather?.main?.humidity}/>
-             <WeatherInfocomponent name= "wind" value ={weather?.main?.wind}/>
+             <WeatherInfocomponent name= "wind" value ={weather?.wind?.speed}/>
              <WeatherInfocomponent name = "pressure" value = {weather?.main?.pressure}/>
          </WeatherInfocontainer>
         </>
