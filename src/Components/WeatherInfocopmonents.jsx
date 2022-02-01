@@ -132,8 +132,8 @@ const getTime = (timeStamp) =>{
              <WeatherInfocomponent name = "humidity" value = {weather?.main?.humidity}/>
              <WeatherInfocomponent name= "wind" value ={weather?.wind?.speed}/>
              <WeatherInfocomponent name = "pressure" value = {weather?.main?.pressure}/>
-         </WeatherInfocontainer>
-        </>
-   )
+         </WeatherInfocontainer> 
+         </>
+         )
 }
 export default WeatherComponent;
